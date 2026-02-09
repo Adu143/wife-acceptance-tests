@@ -54,8 +54,8 @@ const topics = {
       "What is your favorite “us” moment that no one else knows?",
       "What would you change if you time travel to our initial years of love?"
     ]
-  }
-  us: {
+  },
+  future: {
     title: "Future",
     questions: [
       "What is one materialistic thing you want me to buy this year",
