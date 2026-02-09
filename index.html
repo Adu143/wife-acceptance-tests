@@ -3,33 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <title>Our Love ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div id="home" class="page active">
-  <h1>For You, My Love ❤️</h1>
-  <p>Spin the wheel and let memories talk</p>
+  <!-- Background layers -->
+  <div class="bg-collage"></div>
+  <div class="overlay"></div>
 
-  <div class="wheel-wrapper" onclick="spinWheel()">
-    <canvas id="wheel" width="300" height="300"></canvas>
-    <div class="spin-text">SPIN</div>
+  <!-- Main Content -->
+  <div class="content">
+
+    <!-- HOME -->
+    <div id="home" class="page active">
+      <h1>For You, My Love ❤️</h1>
+      <p>Spin the wheel and let our memories speak</p>
+
+      <div class="wheel-wrapper" onclick="spinWheel()">
+        <canvas id="wheel" width="300" height="300"></canvas>
+        <div class="spin-text">SPIN</div>
+      </div>
+
+      <p class="hint">Tap the center to choose a topic ✨</p>
+    </div>
+
+    <!-- QUESTIONS PAGE -->
+    <div id="questions" class="page">
+      <h2 id="topicTitle"></h2>
+      <div id="timer">⏳ 60</div>
+
+      <div id="questionBox"></div>
+
+      <button onclick="nextQuestion()">Next ➡</button>
+      <button onclick="goHome()">⬅ Back</button>
+    </div>
+
   </div>
 
-  <p class="hint">(Tap the heart to spin)</p>
-</div>
-
-<!-- QUESTION PAGE -->
-<div id="questions" class="page">
-  <h2 id="topicTitle"></h2>
-  <div id="timer">⏳ 60</div>
-
-  <div id="questionBox"></div>
-
-  <button onclick="nextQuestion()">Next ➡</button>
-  <button onclick="goHome()">⬅ Back</button>
-</div>
-
-<script src="script.js"></script>
+  <!-- JS -->
+  <script src="script.js"></script>
 </body>
 </html>
