@@ -22,7 +22,7 @@ body {
 .collage div {
   background-size: cover;
   background-position: center;
-  filter: brightness(1.1);
+  filter: brightness(1);
 }
 
 /* LIGHT OVERLAY */
@@ -43,7 +43,7 @@ body {
 
 /* HEADINGS */
 h1, h2 {
-  color: #f5f5ed;
+  color: #666;
 }
 
 .subtitle {
@@ -61,8 +61,8 @@ h1, h2 {
 
 /* WHEEL */
 .wheel-wrapper {
-  position: center;
-  width: 350px;
+  position: relative;
+  width: 300px;
   margin: 30px auto;
   cursor: pointer;
 }
