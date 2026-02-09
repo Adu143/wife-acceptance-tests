@@ -167,15 +167,25 @@ function spinWheel() {
 }
 
 function showSummary() {
+  // Build HTML
   let summaryHtml = "<h2>Your Answers ❤️</h2>";
+  
   for (let topic in answers) {
     summaryHtml += `<h3>${topic}</h3><ul>`;
     answers[topic].forEach((ans, i) => {
-      summaryHtml += `<li><strong>Q${i + 1}:</strong> ${ans}</li>`;
+      summaryHtml += `<li><strong>Q${i + 1}:</strong> ${ans || "<i>No answer</i>"}</li>`;
     });
     summaryHtml += "</ul>";
   }
+
+  // Render in the questionBox
   document.getElementById("questionBox").innerHTML = summaryHtml;
+
+  // Stop any timers
+  clearInterval(timer);
+
+  // Update timer text
+  document.getElementById("timer").innerText = "";
 }
 
 
