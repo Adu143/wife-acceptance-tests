@@ -118,7 +118,7 @@ function nextQuestion() {
 const wheel = document.getElementById("wheel");
 const ctx = wheel.getContext("2d");
 const keys = Object.keys(topics);
-const colors = ["#f6c1cc", "#f9d5a7", "#cde7e3", "#d6e6b5", "#e7c6ff"];
+const colors = ["#f6c1cc", "#f9d5a7", "#cde7e3", "#d6e6b5", "#e7c6ff", "#b2db40"];
 let angle = 0;
 
 function drawWheel() {
