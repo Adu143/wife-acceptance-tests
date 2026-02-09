@@ -1,97 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Us ❤️</title>
+  <meta charset="UTF-8">
+  <title>Our Love ❤️</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div id="home" class="page active">
   <h1>For You, My Love ❤️</h1>
-  <p>Spin the wheel or choose a topic</p>
+  <p>Spin the wheel and let memories talk</p>
 
-  <div class="wheel-container">
+  <div class="wheel-wrapper" onclick="spinWheel()">
     <canvas id="wheel" width="300" height="300"></canvas>
-    <button onclick="spinWheel()">Spin 🎡</button>
+    <div class="spin-text">SPIN</div>
   </div>
 
-  <div class="topics">
-    <button onclick="openPage('love')">Love at First Sight</button>
-    <button onclick="openPage('about')">About Me</button>
-    <button onclick="openPage('travel')">Travel</button>
-    <button onclick="openPage('parenthood')">Parenthood</button>
-    <button onclick="openPage('us')">Us ❤️</button>
-  </div>
+  <p class="hint">(Tap the heart to spin)</p>
 </div>
 
-<!-- LOVE -->
-<div id="love" class="page">
-  <h2>Love at First Sight 💕</h2>
-  <ul>
-    <li>What was your first impression of me when you saw me in 2012?</li>
-    <li>What was our first argument about?</li>
-    <li>What was my weight when you met me in 2015?</li>
-    <li>What was my salary when I left the job to go to Germany?</li>
-    <li>Where did we go for our first dinner date after marriage?</li>
-    <li>Which was the first place we visited in our BMW car?</li>
-    <li>What day did we go for Malta?</li>
-    <li>What is the name of the resort we stayed in Coorg?</li>
-    <li>Which dish that I prepare do you like the most?</li>
-  </ul>
-  <button onclick="goHome()">⬅ Back</button>
-</div>
+<!-- QUESTION PAGE -->
+<div id="questions" class="page">
+  <h2 id="topicTitle"></h2>
+  <div id="timer">⏳ 60</div>
 
-<!-- ABOUT ME -->
-<div id="about" class="page">
-  <h2>About Me 😄</h2>
-  <ul>
-    <li>What is my most annoying habit (that you secretly love)?</li>
-    <li>What is one thing I always forget?</li>
-    <li>What is my most repeated dialogue?</li>
-    <li>When do you feel most connected to me?</li>
-    <li>What is your favorite everyday moment with me?</li>
-    <li>What is one thing I do that makes you feel most loved?</li>
-    <li>What habit of mine surprised you after marriage?</li>
-  </ul>
-  <button onclick="goHome()">⬅ Back</button>
-</div>
+  <div id="questionBox"></div>
 
-<!-- TRAVEL -->
-<div id="travel" class="page">
-  <h2>Travel 🌍</h2>
-  <ul>
-    <li>Which trip with me felt the most special to you?</li>
-    <li>What was the most unplanned trip we ever took?</li>
-    <li>Which place would you love to revisit together?</li>
-    <li>What is one travel moment that still makes you laugh?</li>
-    <li>Where did we have our most relaxed vacation?</li>
-  </ul>
-  <button onclick="goHome()">⬅ Back</button>
-</div>
-
-<!-- PARENTHOOD -->
-<div id="parenthood" class="page">
-  <h2>Parenthood 👶</h2>
-  <ul>
-    <li>What was your first thought when you held our baby?</li>
-    <li>What moment of me as a father melted your heart?</li>
-    <li>What is your favorite routine with our baby?</li>
-    <li>What is one thing you want our child to learn from us?</li>
-  </ul>
-  <button onclick="goHome()">⬅ Back</button>
-</div>
-
-<!-- US -->
-<div id="us" class="page">
-  <h2>Us ❤️</h2>
-  <ul>
-    <li>What changed the most after we got married?</li>
-    <li>What does “home” mean to you now?</li>
-    <li>What is your favorite “us” moment that no one else knows?</li>
-    <li>What would you change if you time travel to our initial years of love?</li>
-    <li>What would you say to us 10 years from now?</li>
-  </ul>
+  <button onclick="nextQuestion()">Next ➡</button>
   <button onclick="goHome()">⬅ Back</button>
 </div>
 
