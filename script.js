@@ -120,7 +120,7 @@ function nextQuestion() {
     console.log("All answers:", answers); // For testing, logs answers
     alert("Thank you for sharing your heart ❤️");
     showSummary();
-    goHome();
+    //goHome();
   }
 }
 
