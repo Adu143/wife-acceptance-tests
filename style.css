@@ -3,33 +3,33 @@
   box-sizing: border-box;
 }
 
-/* BODY */
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
-  background: #faf8f4;
   color: #2c2c2c;
 }
 
-/* BACKGROUND COLLAGE (LIGHT) */
-.bg-collage {
+/* REAL COLLAGE GRID */
+.collage {
   position: fixed;
   inset: 0;
-  background:
-    linear-gradient(
-      rgba(215,215,215,0.2),
-      rgba(215,215,215,0.2)
-    ),
-    url("images/santorini.jpg"),
-    url("images/mallorca.jpg"),
-    url("images/dubai.jpg"),
-    url("images/maldives.jpg"),
-    url("images/interlaken.jpg"),
-    url("images/eiffel.jpg"),
-    url("images/plitvice.jpg");
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  z-index: -2;
+}
+
+.collage div {
   background-size: cover;
   background-position: center;
-  filter: blur(4px) brightness(1.2);
+  filter: brightness(1.1);
+}
+
+/* LIGHT OVERLAY */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 248, 238, 0.75);
   z-index: -1;
 }
 
@@ -106,7 +106,6 @@ h1, h2 {
 
 #questionBox p {
   font-size: 18px;
-  margin-bottom: 15px;
 }
 
 /* INPUT */
@@ -143,3 +142,4 @@ button:hover {
   font-size: 13px;
   color: #777;
 }
+
