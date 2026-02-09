@@ -1,38 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Our Love ❤️</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
   <!-- Background -->
   <div class="bg-collage"></div>
-  <div class="overlay"></div>
 
   <!-- Content -->
   <div class="content">
 
-    <!-- HOME PAGE -->
+    <!-- HOME -->
     <div id="home" class="page active">
       <h1>For You, My Love ❤️</h1>
-      <p class="subtitle">Spin the wheel and let our memories speak</p>
+      <p class="subtitle">Spin the wheel and relive our memories</p>
 
       <div class="wheel-wrapper" onclick="spinWheel()">
         <canvas id="wheel" width="300" height="300"></canvas>
         <div class="spin-text">SPIN</div>
       </div>
 
-      <p class="hint">Tap the center to choose a topic ✨</p>
+      <p class="hint">Tap the center to choose a topic</p>
     </div>
 
-    <!-- QUESTIONS PAGE -->
+    <!-- QUESTIONS -->
     <div id="questions" class="page">
       <h2 id="topicTitle"></h2>
-
       <div id="timer">⏳ 60</div>
 
       <div id="questionBox"></div>
