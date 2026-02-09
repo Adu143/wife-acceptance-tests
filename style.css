@@ -7,15 +7,19 @@
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
-  background: #f8f6f2;
+  background: #faf8f4;
   color: #2c2c2c;
 }
 
-/* BACKGROUND COLLAGE */
+/* BACKGROUND COLLAGE (LIGHT) */
 .bg-collage {
   position: fixed;
   inset: 0;
   background:
+    linear-gradient(
+      rgba(255,255,255,0.85),
+      rgba(255,255,255,0.85)
+    ),
     url("images/santorini.jpg"),
     url("images/mallorca.jpg"),
     url("images/dubai.jpg"),
@@ -25,20 +29,11 @@ body {
     url("images/plitvice.jpg");
   background-size: cover;
   background-position: center;
-  filter: blur(6px) brightness(1.1);
-  opacity: 0.55;
-  z-index: -2;
-}
-
-/* LIGHT OVERLAY */
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(255, 245, 235, 0.65);
+  filter: blur(4px) brightness(1.2);
   z-index: -1;
 }
 
-/* CONTENT WRAPPER */
+/* CONTENT */
 .content {
   max-width: 900px;
   margin: auto;
@@ -47,21 +42,15 @@ body {
 }
 
 /* HEADINGS */
-h1 {
+h1, h2 {
   color: #5a2d2d;
-  margin-bottom: 8px;
-}
-
-h2 {
-  color: #5a2d2d;
-  margin-bottom: 10px;
 }
 
 .subtitle {
-  color: #555;
+  color: #666;
 }
 
-/* PAGE HANDLING */
+/* PAGES */
 .page {
   display: none;
 }
@@ -83,13 +72,13 @@ h2 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #f1e2c6;
-  color: #2c2c2c;
+  background: #ffffff;
+  color: #5a2d2d;
   padding: 18px 22px;
   border-radius: 50%;
   font-weight: 700;
   letter-spacing: 1px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
 }
 
 /* TIMER */
@@ -99,36 +88,34 @@ h2 {
   padding: 6px 14px;
   font-size: 16px;
   color: #333;
-  background: rgba(255,255,255,0.95);
+  background: #ffffff;
   border-radius: 20px;
   font-weight: 600;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
 }
 
 /* QUESTION CARD */
 #questionBox {
-  background: rgba(255,255,255,0.95);
+  background: #ffffff;
   padding: 25px;
   border-radius: 18px;
   max-width: 600px;
   margin: 25px auto;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
 }
 
 #questionBox p {
   font-size: 18px;
-  color: #333;
   margin-bottom: 15px;
 }
 
-/* INPUT FIELD */
+/* INPUT */
 input {
   width: 95%;
   padding: 12px;
   font-size: 15px;
   border-radius: 12px;
-  border: 1px solid #cbb89d;
-  outline: none;
+  border: 1px solid #d2c4aa;
 }
 
 /* BUTTONS */
@@ -137,7 +124,7 @@ input {
 }
 
 button {
-  background: #cbb89d;
+  background: #e6d3b1;
   border: none;
   color: #2c2c2c;
   padding: 12px 22px;
@@ -148,11 +135,11 @@ button {
 }
 
 button:hover {
-  background: #e0cfb6;
+  background: #f1e2c6;
 }
 
 /* SMALL TEXT */
 .hint {
   font-size: 13px;
-  color: #666;
+  color: #777;
 }
