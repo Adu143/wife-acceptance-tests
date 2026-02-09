@@ -1,7 +1,5 @@
-/* CONFIG */
 const TIME_PER_QUESTION = 180;
 
-/* DATA */
 const topics = {
   love: {
     title: "Love at First Sight 💕",
@@ -60,10 +58,8 @@ const topics = {
   }
 };
 
-/* STATE */
 let currentTopic, currentIndex, timer, timeLeft;
 
-/* NAV */
 function openPage(id) {
   document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
   document.getElementById(id).classList.add("active");
@@ -74,7 +70,6 @@ function goHome() {
   openPage("home");
 }
 
-/* QUESTIONS */
 function startTopic(key) {
   currentTopic = topics[key];
   currentIndex = 0;
@@ -151,4 +146,3 @@ function spinWheel() {
 }
 
 drawWheel();
-
