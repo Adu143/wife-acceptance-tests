@@ -105,22 +105,24 @@ function showQuestion() {
 }
 
 function nextQuestion() {
+  // 1. Grab current input
   const input = document.querySelector("#questionBox input");
   const answer = input ? input.value.trim() : "";
 
+  // 2. Initialize array for this topic if needed
   if (!answers[currentTopic.title]) {
     answers[currentTopic.title] = [];
   }
+
+  // 3. Store the answer at current index
   answers[currentTopic.title][currentIndex] = answer;
 
+  // 4. Move to next question or show summary
   if (currentIndex < currentTopic.questions.length - 1) {
     currentIndex++;
     showQuestion();
   } else {
-    console.log("All answers:", answers); // For testing, logs answers
-    alert("Thank you for sharing your heart ❤️");
-    showSummary();
-    //goHome();
+    showSummary(); // instead of alert/goHome
   }
 }
 
