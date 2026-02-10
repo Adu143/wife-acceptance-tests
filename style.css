@@ -172,6 +172,39 @@ button:hover {
   color: #777;
 }
 
+/* SUMMARY PAGE */
+#summaryContent {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 18px;
+  max-width: 700px;
+  margin: 25px auto;
+  text-align: left;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+.summary-topic {
+  margin-top: 20px;
+}
+
+.summary-topic h3 {
+  color: #5a2d2d;
+  margin-bottom: 10px;
+}
+
+.summary-item {
+  margin-bottom: 12px;
+}
+
+.summary-q {
+  font-weight: 600;
+}
+
+.summary-a {
+  margin-left: 10px;
+  color: #444;
+}
+
 /* ============================= */
 /* KEN BURNS ANIMATIONS */
 /* ============================= */
