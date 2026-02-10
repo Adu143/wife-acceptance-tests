@@ -1,5 +1,6 @@
-const TIME_PER_QUESTION = 60;
+const TIME_PER_QUESTION = 180;
 let musicStarted = false;
+let answers = [];
 
 const bgMusic = document.getElementById("bgMusic");
 const musicToggle = document.getElementById("musicToggle");
@@ -87,8 +88,6 @@ const topics = {
 let currentTopicKey;
 let currentIndex;
 let timer;
-let timeLeft;
-let answers = [];
 
 /* NAV */
 function openPage(id) {
@@ -103,6 +102,7 @@ function goHome() {
 
 /* QUESTIONS */
 function startTopic(key) {
+  startMusicOnce();
   currentTopicKey = key;
   currentIndex = 0;
   document.getElementById("topicTitle").innerText = topics[key].title;
@@ -111,15 +111,15 @@ function startTopic(key) {
 }
 
 function showQuestion() {
-  clearInterval(timer);
-  timeLeft = TIME_PER_QUESTION;
+  let timeLeft = TIME_PER_QUESTION;
   document.getElementById("timer").innerText = `⏳ ${timeLeft}`;
 
   document.getElementById("questionBox").innerHTML = `
     <p>${topics[currentTopicKey].questions[currentIndex]}</p>
-    <input id="answerInput" type="text" placeholder="Write your answer here ❤️">
+    <input id="answerInput" placeholder="Write your answer here ❤️">
   `;
 
+  clearInterval(timer);
   timer = setInterval(() => {
     timeLeft--;
     document.getElementById("timer").innerText = `⏳ ${timeLeft}`;
@@ -128,11 +128,11 @@ function showQuestion() {
 }
 
 function nextQuestion() {
-  const input = document.getElementById("answerInput");
+  const val = document.getElementById("answerInput").value || "(No answer)";
   answers.push({
     topic: topics[currentTopicKey].title,
     question: topics[currentTopicKey].questions[currentIndex],
-    answer: input.value || "(No answer)"
+    answer: val
   });
 
   if (currentIndex < topics[currentTopicKey].questions.length - 1) {
@@ -153,26 +153,22 @@ function showSummary() {
 
   const grouped = {};
   answers.forEach(a => {
-    if (!grouped[a.topic]) grouped[a.topic] = [];
+    grouped[a.topic] = grouped[a.topic] || [];
     grouped[a.topic].push(a);
   });
 
-  Object.keys(grouped).forEach(topic => {
-    const section = document.createElement("div");
-    section.className = "summary-topic";
-    section.innerHTML = `<h3>${topic}</h3>`;
-
-    grouped[topic].forEach(item => {
-      section.innerHTML += `
-        <div class="summary-item">
-          <div class="summary-q">${item.question}</div>
-          <div class="summary-a">❤️ ${item.answer}</div>
-        </div>
+  for (let topic in grouped) {
+    const div = document.createElement("div");
+    div.className = "summary-topic";
+    div.innerHTML = `<h3>${topic}</h3>`;
+    grouped[topic].forEach(i => {
+      div.innerHTML += `
+        <div class="summary-q">${i.question}</div>
+        <div class="summary-a">❤️ ${i.answer}</div>
       `;
     });
-
-    container.appendChild(section);
-  });
+    container.appendChild(div);
+  }
 }
 
 function copySummary() {
@@ -203,7 +199,6 @@ function drawWheel() {
 }
 
 function spinWheel() {
-  startMusicOnce();
   let spins = Math.random() * 3000 + 2000;
   let start = null;
 
@@ -226,4 +221,3 @@ function spinWheel() {
 }
 
 drawWheel();
-
