@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Adrash's Love ❤️</title>
+  <title>Our Love ❤️</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -16,21 +16,29 @@
     <div style="background-image:url('images/dubai.jpg')"></div>
     <div style="background-image:url('images/maldives.jpg')"></div>
     <div style="background-image:url('images/interlaken.jpg')"></div>
-    <div style="background-image:url('images/eifel.jpg')"></div>
+    <div style="background-image:url('images/eiffel.jpg')"></div>
     <div style="background-image:url('images/plitvice.jpg')"></div>
-    <div style="background-image:url('images/blackforest.jpg')"></div>
-    <div style="background-image:url('images/disneyland.jpg')"></div>
+    <div></div>
+    <div></div>
   </div>
 
   <!-- LIGHT OVERLAY -->
   <div class="overlay"></div>
+
+  <!-- MUSIC -->
+  <audio id="bgMusic" loop>
+    <source src="music/love-theme.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- MUSIC TOGGLE -->
+  <div id="musicToggle" onclick="toggleMusic()">🔈</div>
 
   <!-- CONTENT -->
   <div class="content">
 
     <!-- HOME -->
     <div id="home" class="page active">
-      <h1>Let's put our love to some Litmus test</h1>
+      <h1>For You, My Love ❤️</h1>
       <p class="subtitle">Spin the wheel and relive our memories</p>
 
       <div class="wheel-wrapper" onclick="spinWheel()">
@@ -54,19 +62,18 @@
       </div>
     </div>
 
-  </div>
-  
-<!-- SUMMARY -->
-<div id="summary" class="page">
-  <h2>Our Memories ❤️</h2>
+    <!-- SUMMARY -->
+    <div id="summary" class="page">
+      <h2>Our Memories ❤️</h2>
+      <div id="summaryContent"></div>
 
-  <div id="summaryContent"></div>
+      <div class="actions">
+        <button onclick="copySummary()">📋 Copy</button>
+        <button onclick="goHome()">🏠 Home</button>
+      </div>
+    </div>
 
-  <div class="actions">
-    <button onclick="copySummary()">📋 Copy</button>
-    <button onclick="goHome()">🏠 Home</button>
   </div>
-</div>
 
   <script src="script.js"></script>
 </body>
