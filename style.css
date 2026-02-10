@@ -1,171 +1,83 @@
 * {
   box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
 }
 
 body {
   margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  color: #2c2c2c;
+  min-height: 100vh;
   overflow-x: hidden;
 }
 
-/* COLLAGE + KEN BURNS */
-.collage {
+/* === BACKGROUND COLLAGE WITH KEN BURNS === */
+.background {
   position: fixed;
   inset: 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  z-index: -2;
-  animation: slowZoom 80s ease-in-out infinite alternate;
-}
-
-.collage div {
+  z-index: -1;
+  background-image:
+    url("images/santorini.jpg"),
+    url("images/mallorca.jpg"),
+    url("images/dubai.jpg"),
+    url("images/maldives.jpg"),
+    url("images/interlaken.jpg"),
+    url("images/paris.jpg"),
+    url("images/plitvice.jpg");
   background-size: cover;
   background-position: center;
-  animation: pan 70s ease-in-out infinite alternate;
+  filter: brightness(1.15) saturate(1.1);
+  animation: kenburns 40s ease-in-out infinite alternate;
 }
 
-.collage div:nth-child(even) {
-  animation-duration: 90s;
+/* Ken Burns animation */
+@keyframes kenburns {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.15) translate(-2%, -2%);
+  }
 }
 
-/* LIGHT OVERLAY */
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(255, 250, 242, 0.78);
-  z-index: -1;
-}
-
-/* CONTENT */
-.content {
-  max-width: 900px;
-  margin: auto;
-  padding: 30px 20px 60px;
-  text-align: center;
-}
-
-/* HEADINGS */
-h1, h2 {
-  color: #5a2d2d;
-}
-
-.subtitle {
-  color: #666;
-}
-
-/* PAGES */
-.page {
-  display: none;
-}
-
-.page.active {
-  display: block;
-}
-
-/* WHEEL */
-.wheel-wrapper {
-  position: relative;
-  width: 300px;
-  margin: 30px auto;
-  cursor: pointer;
-}
-
-.spin-text {
+/* Light overlay for readability */
+.background::after {
+  content: "";
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #ffffff;
-  color: #5a2d2d;
-  padding: 18px 22px;
-  border-radius: 50%;
-  font-weight: 700;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  inset: 0;
+  background: rgba(255, 255, 255, 0.65);
 }
 
-/* TIMER */
-#timer {
-  margin-top: 12px;
-  display: inline-block;
-  padding: 6px 16px;
-  background: #ffffff;
-  border-radius: 20px;
-  font-weight: 600;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+/* === MAIN CONTENT === */
+.container {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
 }
 
-/* QUESTION CARD */
-#questionBox,
-#summaryContent {
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 18px;
-  max-width: 650px;
-  margin: 25px auto;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-input {
-  width: 95%;
-  padding: 12px;
-  border-radius: 12px;
-  border: 1px solid #d2c4aa;
+h1, h2 {
+  color: #4a2c2a;
 }
 
-/* BUTTONS */
 button {
-  background: #e6d3b1;
+  background: #d16c7b;
+  color: white;
   border: none;
-  padding: 12px 22px;
-  margin: 8px;
+  padding: 10px 18px;
   border-radius: 25px;
-  font-weight: 600;
   cursor: pointer;
+  font-size: 16px;
 }
 
 button:hover {
-  background: #f1e2c6;
+  background: #b85a68;
 }
 
-/* MUSIC TOGGLE */
-#musicToggle {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #ffffff;
-  padding: 12px 14px;
-  border-radius: 50%;
-  font-size: 18px;
-  cursor: pointer;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
-  z-index: 10;
+#wheelSection {
+  text-align: center;
+  margin-top: 20px;
 }
-
-/* SUMMARY */
-.summary-topic h3 {
-  color: #5a2d2d;
-}
-
-.summary-q {
-  font-weight: 600;
-}
-
-.summary-a {
-  margin-left: 10px;
-  margin-bottom: 10px;
-}
-
-/* KEN BURNS */
-@keyframes slowZoom {
-  from { transform: scale(1); }
-  to { transform: scale(1.08); }
-}
-
-@keyframes pan {
-  from { background-position: 45% 45%; }
-  to { background-position: 55% 55%; }
-}
-
-
