@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Us, One Question at a Time 💕</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <!-- Background collage -->
-  <div class="background"></div>
+  <div class="collage">
+    <div style="background-image:url('images/santorini.jpg')"></div>
+    <div style="background-image:url('images/mallorca.jpg')"></div>
+    <div style="background-image:url('images/dubai.jpg')"></div>
+    <div style="background-image:url('images/maldives.jpg')"></div>
+    <div style="background-image:url('images/interlaken.jpg')"></div>
+    <div style="background-image:url('images/paris.jpg')"></div>
+    <div style="background-image:url('images/plitvice.jpg')"></div>
+  </div>
 
   <!-- Music -->
   <audio id="bgMusic" loop>
@@ -24,8 +32,10 @@
 
     <!-- Wheel -->
     <section id="wheelSection">
-      <canvas id="wheel" width="320" height="320"></canvas>
-      <button id="spinBtn">🎡 Spin</button>
+      <div class="wheel-wrapper">
+        <canvas id="wheel" width="320" height="320"></canvas>
+        <button id="spinBtn" class="spin-center">SPIN</button>
+      </div>
     </section>
 
     <!-- Question -->
@@ -54,5 +64,6 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
