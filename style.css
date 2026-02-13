@@ -1,42 +1,50 @@
-* {
-  box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
-}
+* { box-sizing: border-box; font-family: system-ui; }
 
 body {
   margin: 0;
+  color: #fff;
   min-height: 100vh;
-  overflow-x: hidden;
 }
 
-/* ================= COLLAGE ================= */
-.collage {
+/* ===== BACKGROUND COLLAGE ===== */
+.bg {
   position: fixed;
   inset: 0;
   z-index: -3;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  animation: kenburns 50s ease-in-out infinite alternate;
+  overflow: hidden;
 }
 
-.collage div {
+.bg div {
+  position: absolute;
+  inset: 0;
   background-size: cover;
   background-position: center;
+  opacity: 0;
+  animation: fade 70s infinite;
 }
 
-/* Ken Burns */
-@keyframes kenburns {
-  from { transform: scale(1); }
-  to { transform: scale(1.1); }
+.bg div:nth-child(1) { animation-delay: 0s; }
+.bg div:nth-child(2) { animation-delay: 10s; }
+.bg div:nth-child(3) { animation-delay: 20s; }
+.bg div:nth-child(4) { animation-delay: 30s; }
+.bg div:nth-child(5) { animation-delay: 40s; }
+.bg div:nth-child(6) { animation-delay: 50s; }
+.bg div:nth-child(7) { animation-delay: 60s; }
+
+@keyframes fade {
+  0%   { opacity: 0; transform: scale(1); }
+  10%  { opacity: 1; }
+  40%  { opacity: 1; transform: scale(1.1); }
+  50%  { opacity: 0; }
+  100% { opacity: 0; }
 }
 
-/* Mood overlay */
+/* Dark romantic overlay */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0,0,0,0.45);
   z-index: -2;
 }
 
@@ -47,16 +55,12 @@ body::after {
   inset: 0;
   pointer-events: none;
   z-index: -1;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(0,0,0,0) 55%,
-    rgba(0,0,0,0.45) 100%
-  );
+  background: radial-gradient(circle, transparent 55%, rgba(0,0,0,0.6));
 }
 
-/* ================= CONTENT ================= */
-.container {
-  max-width: 720px;
+/* ===== APP ===== */
+.app {
+  max-width: 700px;
   margin: auto;
   padding: 20px;
 }
@@ -67,62 +71,44 @@ header {
   align-items: center;
 }
 
-h1, h2 {
-  color: #fff;
-}
-
-button {
-  background: #d16c7b;
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 25px;
-  cursor: pointer;
-}
-
-#wheelSection {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.wheel-wrapper {
+/* ===== WHEEL ===== */
+.wheel-wrap {
   position: relative;
-  width: 320px;
-  margin: auto;
+  width: 300px;
+  margin: 40px auto;
 }
 
-.spin-center {
+#wheel {
+  border-radius: 50%;
+  background: white;
+}
+
+#spin {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  inset: 0;
+  margin: auto;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: none;
   background: #fff;
   color: #d16c7b;
   font-weight: bold;
-  border-radius: 50%;
-  width: 80px;
-  height: 80px;
+  cursor: pointer;
 }
 
-#questionSection, #summarySection {
-  background: rgba(255, 255, 255, 0.92);
+/* ===== QUESTION ===== */
+#questionBox {
+  background: rgba(255,255,255,0.92);
+  color: #333;
   padding: 20px;
-  border-radius: 15px;
-  margin-top: 20px;
+  border-radius: 16px;
 }
 
 textarea {
   width: 100%;
   height: 120px;
-  padding: 12px;
-  border-radius: 10px;
+  margin-top: 10px;
 }
 
-.timer {
-  margin: 12px 0;
-  font-weight: bold;
-}
-
-.hidden {
-  display: none;
-}
+.hidden { display: none; }
