@@ -1,59 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Us, One Question at a Time 💕</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Our Love ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
-<!-- Background -->
-<div class="bg">
-  <div style="background-image:url('images/santorini.jpg')"></div>
-  <div style="background-image:url('images/mallorca.jpg')"></div>
-  <div style="background-image:url('images/dubai.jpg')"></div>
-  <div style="background-image:url('images/maldives.jpg')"></div>
-  <div style="background-image:url('images/interlaken.jpg')"></div>
-  <div style="background-image:url('images/paris.jpg')"></div>
-  <div style="background-image:url('images/plitvice.jpg')"></div>
-</div>
-
-<audio id="music" loop>
-  <source src="music/romantic.mp3" type="audio/mpeg">
-</audio>
-
-<div class="app">
-
-  <header>
-    <h1>Us, One Question at a Time 💖</h1>
-    <button id="musicBtn">🎵 Music</button>
-  </header>
-
-  <!-- WHEEL -->
-  <div id="wheelSection" class="wheel-wrap">
-    <canvas id="wheel" width="300" height="300"></canvas>
-    <button id="spin">SPIN</button>
+  <!-- COLLAGE BACKGROUND -->
+  <div class="collage">
+    <div style="background-image:url('images/santorini.jpg')"></div>
+    <div style="background-image:url('images/mallorca.jpg')"></div>
+    <div style="background-image:url('images/dubai.jpg')"></div>
+    <div style="background-image:url('images/maldives.jpg')"></div>
+    <div style="background-image:url('images/interlaken.jpg')"></div>
+    <div style="background-image:url('images/eiffel.jpg')"></div>
+    <div style="background-image:url('images/plitvice.jpg')"></div>
   </div>
 
-  <!-- QUESTION BOX -->
-  <div id="questionBox" class="hidden">
-    <h2 id="topic"></h2>
-    <p id="question"></p>
+  <!-- LIGHT OVERLAY -->
+  <div class="overlay"></div>
 
-    <textarea id="answerInput" placeholder="Write your answer…"></textarea>
+  <!-- CONTENT -->
+  <div class="content">
 
-    <button id="nextBtn">Next ➡️</button>
+    <!-- HOME -->
+    <div id="home" class="page active">
+      <h1>For You, My Love ❤️</h1>
+      <p class="subtitle">Spin the wheel and relive our memories</p>
+
+      <div class="wheel-wrapper" onclick="spinWheel()">
+        <canvas id="wheel" width="300" height="300"></canvas>
+        <div class="spin-text">SPIN</div>
+      </div>
+
+      <p class="hint">Tap the center to choose a topic</p>
+    </div>
+
+    <!-- QUESTIONS -->
+    <div id="questions" class="page">
+      <h2 id="topicTitle"></h2>
+      <div id="timer">⏳ 60</div>
+
+      <div id="questionBox"></div>
+
+      <div class="actions">
+        <button onclick="nextQuestion()">Next ➡</button>
+        <button onclick="goHome()">⬅ Back</button>
+      </div>
+    </div>
+
   </div>
 
-  <!-- SUMMARY -->
-  <div id="summaryPage" class="hidden">
-    <h2 id="summaryTitle"></h2>
-    <div id="summaryContent"></div>
-    <button id="spinAgain">🎡 Spin Again</button>
-  </div>
-
-</div>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
+
