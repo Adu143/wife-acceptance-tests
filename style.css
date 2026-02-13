@@ -30,7 +30,18 @@ body {
   animation: pan 60s ease-in-out infinite alternate;
 }
 
-/* Subtle variations so tiles don't move identically */
+/* Background Images */
+.tile1 { background-image: url("images/santorini.jpg"); }
+.tile2 { background-image: url("images/mallorca.jpg"); }
+.tile3 { background-image: url("images/dubai.jpg"); }
+.tile4 { background-image: url("images/maldives.jpg"); }
+.tile5 { background-image: url("images/interlaken.jpg"); }
+.tile6 { background-image: url("images/eiffel.jpg"); }
+.tile7 { background-image: url("images/plitvice.jpg"); }
+.tile8 { background-image: url("images/photo8.jpg"); }
+.tile9 { background-image: url("images/photo9.jpg"); }
+
+/* Slight animation variations */
 .collage div:nth-child(odd) {
   animation-duration: 70s;
 }
@@ -38,11 +49,11 @@ body {
   animation-duration: 90s;
 }
 
-/* LIGHT OVERLAY (VERY IMPORTANT) */
+/* OVERLAY */
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(255, 250, 242, 0.78);
+  background: rgba(255, 250, 242, 0.45);
   z-index: -1;
 }
 
@@ -134,7 +145,6 @@ h1, h2 {
   margin-bottom: 15px;
 }
 
-/* INPUT */
 input {
   width: 95%;
   padding: 12px;
@@ -166,30 +176,21 @@ button:hover {
   background: #f1e2c6;
 }
 
-/* SMALL TEXT */
 .hint {
   font-size: 13px;
   color: #777;
 }
 
 /* ============================= */
-/* KEN BURNS ANIMATIONS */
+/* KEN BURNS ANIMATION */
 /* ============================= */
 
 @keyframes slowZoom {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.08);
-  }
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
 }
 
 @keyframes pan {
-  from {
-    background-position: 45% 45%;
-  }
-  to {
-    background-position: 55% 55%;
-  }
+  from { background-position: 45% 45%; }
+  to { background-position: 55% 55%; }
 }
