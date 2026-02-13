@@ -20,8 +20,10 @@ body {
     url("images/dubai.jpg"),
     url("images/maldives.jpg"),
     url("images/interlaken.jpg"),
-    url("images/paris.jpg"),
-    url("images/plitvice.jpg");
+    url("images/disneyland.jpg"),
+    url("images/plitvice.jpg"),
+    url("images/blackforest.jpg"),
+    url("images/eifel.jpg");
   background-size: cover;
   background-position: center;
   filter: brightness(1.15) saturate(1.1);
