@@ -1,148 +1,127 @@
-const TIME_PER_QUESTION = 60;
-
 const topics = {
-  love: {
-    title: "Love at First Sight 💕",
-    questions: [
-      "What was your first impression of me when you saw me in 2012?",
-      "What was our first argument about?",
-      "What was my weight when you met me in 2015?",
-      "What was my salary when I left the job to go to Germany?",
-      "Where did we go for our first dinner date after marriage?",
-      "Which was the first place we visited in our BMW car?",
-      "What day did we go for Malta?",
-      "What is the name of the resort we stayed in Coorg?",
-      "Which dish that I prepare do you like the most?"
-    ]
-  },
-  about: {
-    title: "About Me 😄",
-    questions: [
-      "What is my most annoying habit (that you secretly love)?",
-      "What is one thing I always forget?",
-      "What is my most repeated dialogue?",
-      "When do you feel most connected to me?",
-      "What is your favorite everyday moment with me?",
-      "What is one thing I do that makes you feel most loved?",
-      "What habit of mine surprised you after marriage?"
-    ]
-  },
-  travel: {
-    title: "Travel 🌍",
-    questions: [
-      "Which trip with me felt the most special to you?",
-      "What was the most unplanned trip we ever took?",
-      "Which place would you love to revisit together?",
-      "What is one travel moment that still makes you laugh?",
-      "Where did we have our most relaxed vacation?"
-    ]
-  },
-  parenthood: {
-    title: "Parenthood 👶",
-    questions: [
-      "What was your first thought when you held our baby?",
-      "What moment of me as a father melted your heart?",
-      "What is your favorite routine with our baby?",
-      "What is one thing you want our child to learn from us?"
-    ]
-  },
-  us: {
-    title: "Us ❤️",
-    questions: [
-      "What changed the most after we got married?",
-      "What does “home” mean to you now?",
-      "What is your favorite “us” moment that no one else knows?",
-      "What would you change if you time travel to our initial years of love?",
-      "What would you say to us 10 years from now?"
-    ]
-  }
+  "Love at First Sight": [
+    "What was your first impression of me when you saw me in 2012?",
+    "What was our first argument about?",
+    "What was my weight when you met me in 2015?",
+    "What was my salary when I left the job to go to Germany?",
+    "Where did we go for our first dinner date after marriage?",
+    "Which was the first place we visited in your BMW car?",
+    "What day did we go for Malta?",
+    "What is the name of the resort we stayed in Coorg?",
+    "Which dish that I prepare do you like the most?"
+  ],
+  "About Me": [
+    "What is my most annoying habit (that you secretly love)?",
+    "What is one thing I always forget?",
+    "What is my most repeated dialogue?",
+    "When do you feel most connected to me?",
+    "What habit of mine surprised you after marriage?"
+  ],
+  "Travel": [
+    "Which trip felt most special?",
+    "What was our most unplanned trip?",
+    "Which place would you revisit?",
+    "Which travel moment still makes you laugh?"
+  ],
+  "Parenthood": [
+    "What was your first thought holding our baby?",
+    "What moment of me as a father melted your heart?"
+  ],
+  "Us": [
+    "What changed most after marriage?",
+    "What does home mean to you now?",
+    "What would you tell us 10 years from now?"
+  ]
 };
 
-let currentTopic, currentIndex, timer, timeLeft;
+const answers = [];
+let currentTopic, currentQuestions, qIndex = 0;
+let timerInterval;
+let timePerQuestion = 180;
 
-function openPage(id) {
-  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
+// 🎵 Music toggle
+const music = document.getElementById("bgMusic");
+document.getElementById("musicToggle").onclick = () => {
+  music.paused ? music.play() : music.pause();
+};
+
+// 🎡 Wheel
+const canvas = document.getElementById("wheel");
+const ctx = canvas.getContext("2d");
+const topicNames = Object.keys(topics);
+
+function drawWheel() {
+  const angle = (2 * Math.PI) / topicNames.length;
+  topicNames.forEach((t, i) => {
+    ctx.beginPath();
+    ctx.moveTo(160, 160);
+    ctx.arc(160, 160, 160, i * angle, (i + 1) * angle);
+    ctx.fillStyle = `hsl(${i * 60}, 70%, 75%)`;
+    ctx.fill();
+    ctx.save();
+    ctx.translate(160, 160);
+    ctx.rotate(i * angle + angle / 2);
+    ctx.fillStyle = "#333";
+    ctx.fillText(t, 60, 0);
+    ctx.restore();
+  });
+}
+drawWheel();
+
+document.getElementById("spinBtn").onclick = () => {
+  currentTopic = topicNames[Math.floor(Math.random() * topicNames.length)];
+  currentQuestions = topics[currentTopic];
+  qIndex = 0;
+  document.getElementById("wheelSection").classList.add("hidden");
+  document.getElementById("questionSection").classList.remove("hidden");
+  loadQuestion();
+};
+
+function loadQuestion() {
+  if (qIndex >= currentQuestions.length) {
+    showSummary();
+    return;
+  }
+  document.getElementById("topicTitle").innerText = currentTopic;
+  document.getElementById("questionText").innerText = currentQuestions[qIndex];
+  document.getElementById("answerInput").value = "";
+  startTimer();
 }
 
-function goHome() {
-  clearInterval(timer);
-  openPage("home");
-}
+function startTimer() {
+  clearInterval(timerInterval);
+  let timeLeft = timePerQuestion;
+  document.getElementById("timeLeft").innerText = timeLeft;
 
-function startTopic(key) {
-  currentTopic = topics[key];
-  currentIndex = 0;
-  document.getElementById("topicTitle").innerText = currentTopic.title;
-  openPage("questions");
-  showQuestion();
-}
-
-function showQuestion() {
-  clearInterval(timer);
-  timeLeft = TIME_PER_QUESTION;
-  document.getElementById("timer").innerText = `⏳ ${timeLeft}`;
-
-  document.getElementById("questionBox").innerHTML = `
-    <p>${currentTopic.questions[currentIndex]}</p>
-    <input type="text" placeholder="Write your answer here ❤️">
-  `;
-
-  timer = setInterval(() => {
+  timerInterval = setInterval(() => {
     timeLeft--;
-    document.getElementById("timer").innerText = `⏳ ${timeLeft}`;
-    if (timeLeft <= 0) clearInterval(timer);
+    document.getElementById("timeLeft").innerText = timeLeft;
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+    }
   }, 1000);
 }
 
-function nextQuestion() {
-  if (currentIndex < currentTopic.questions.length - 1) {
-    currentIndex++;
-    showQuestion();
-  } else {
-    alert("Thank you for sharing your heart ❤️");
-    goHome();
-  }
-}
+document.getElementById("nextBtn").onclick = () => {
+  answers.push({
+    topic: currentTopic,
+    question: currentQuestions[qIndex],
+    answer: document.getElementById("answerInput").value
+  });
+  qIndex++;
+  loadQuestion();
+};
 
-/* WHEEL */
-const wheel = document.getElementById("wheel");
-const ctx = wheel.getContext("2d");
-const keys = Object.keys(topics);
-const colors = ["#f6c1cc", "#f9d5a7", "#cde7e3", "#d6e6b5", "#e7c6ff"];
-let angle = 0;
+function showSummary() {
+  document.getElementById("questionSection").classList.add("hidden");
+  document.getElementById("summarySection").classList.remove("hidden");
 
-function drawWheel() {
-  const slice = (2 * Math.PI) / keys.length;
-  keys.forEach((k, i) => {
-    ctx.beginPath();
-    ctx.fillStyle = colors[i];
-    ctx.moveTo(150, 150);
-    ctx.arc(150, 150, 150, angle + i * slice, angle + (i + 1) * slice);
-    ctx.fill();
+  const summary = document.getElementById("summaryContent");
+  summary.innerHTML = "";
+
+  answers.forEach(a => {
+    const p = document.createElement("p");
+    p.innerHTML = `<strong>${a.question}</strong><br/>${a.answer || "❤️"}`;
+    summary.appendChild(p);
   });
 }
-
-function spinWheel() {
-  let spins = Math.random() * 3000 + 2000;
-  let start = null;
-
-  function animate(ts) {
-    if (!start) start = ts;
-    angle += 0.1;
-    ctx.clearRect(0, 0, 300, 300);
-    drawWheel();
-
-    if (ts - start < spins) {
-      requestAnimationFrame(animate);
-    } else {
-      const index = Math.floor(
-        (keys.length - (angle / (2 * Math.PI)) % keys.length) % keys.length
-      );
-      startTopic(keys[index]);
-    }
-  }
-  requestAnimationFrame(animate);
-}
-
-drawWheel();
