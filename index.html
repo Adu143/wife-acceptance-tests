@@ -2,57 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Our Love ❤️</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Us, One Question at a Time 💕</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-  <!-- COLLAGE BACKGROUND -->
+  <!-- Background collage -->
   <div class="collage">
-    <div class="tile1"></div>
-    <div class="tile2"></div>
-    <div class="tile3"></div>
-    <div class="tile4"></div>
-    <div class="tile5"></div>
-    <div class="tile6"></div>
-    <div class="tile7"></div>
-    <div class="tile8"></div>
-    <div class="tile9"></div>
+    <div style="background-image:url('images/santorini.jpg')"></div>
+    <div style="background-image:url('images/mallorca.jpg')"></div>
+    <div style="background-image:url('images/dubai.jpg')"></div>
+    <div style="background-image:url('images/maldives.jpg')"></div>
+    <div style="background-image:url('images/interlaken.jpg')"></div>
+    <div style="background-image:url('images/paris.jpg')"></div>
+    <div style="background-image:url('images/plitvice.jpg')"></div>
   </div>
 
-  <!-- LIGHT OVERLAY -->
-  <div class="overlay"></div>
+  <!-- Music -->
+  <audio id="bgMusic" loop>
+    <source src="music/romantic.mp3" type="audio/mpeg">
+  </audio>
 
-  <!-- CONTENT -->
-  <div class="content">
+  <div class="container">
 
-    <!-- HOME -->
-    <div id="home" class="page active">
-      <h1>For You, My Love ❤️</h1>
-      <p class="subtitle">Spin the wheel and relive our memories</p>
+    <header>
+      <h1>Us, One Question at a Time 💖</h1>
+      <button id="musicToggle">🎵 Music</button>
+    </header>
 
-      <div class="wheel-wrapper" onclick="spinWheel()">
-        <canvas id="wheel" width="300" height="300"></canvas>
-        <div class="spin-text">SPIN</div>
+    <!-- Wheel -->
+    <section id="wheelSection">
+      <div class="wheel-wrapper">
+        <canvas id="wheel" width="320" height="320"></canvas>
+        <button id="spinBtn" class="spin-center">SPIN</button>
       </div>
+    </section>
 
-      <p class="hint">Tap the center to choose a topic</p>
-    </div>
-
-    <!-- QUESTIONS -->
-    <div id="questions" class="page">
+    <!-- Question -->
+    <section id="questionSection" class="hidden">
       <h2 id="topicTitle"></h2>
-      <div id="timer">⏳ 60</div>
+      <p id="questionText"></p>
 
-      <div id="questionBox"></div>
+      <textarea id="answerInput" placeholder="Write your answer here..."></textarea>
 
-      <div class="actions">
-        <button onclick="nextQuestion()">Next ➡</button>
-        <button onclick="goHome()">⬅ Back</button>
+      <div class="timer">
+        ⏳ Time left: <span id="timeLeft">180</span>s
       </div>
-    </div>
+
+      <button id="nextBtn">Next ➡️</button>
+    </section>
+
+    <!-- Summary -->
+    <section id="summarySection" class="hidden">
+      <h2>Our Little Love Book 💌</h2>
+      <div id="summaryContent"></div>
+      <button onclick="window.print()">🖨️ Save / Print</button>
+    </section>
 
   </div>
 
