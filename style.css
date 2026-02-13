@@ -40,10 +40,10 @@ body {
 .tile3 { background-image: url("images/dubai.jpg"); }
 .tile4 { background-image: url("images/maldives.jpg"); }
 .tile5 { background-image: url("images/interlaken.jpg"); }
-.tile6 { background-image: url("images/eiffel.jpg"); }
+.tile6 { background-image: url("images/eifel.jpg"); }
 .tile7 { background-image: url("images/plitvice.jpg"); }
-.tile8 { background-image: url("images/photo8.jpg"); }
-.tile9 { background-image: url("images/photo9.jpg"); }
+.tile8 { background-image: url("images/disneyland.jpg"); }
+.tile9 { background-image: url("images/blackforest.jpg"); }
 
 /* Slight animation variation */
 .collage div:nth-child(odd) {
