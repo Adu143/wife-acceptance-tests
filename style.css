@@ -1,4 +1,7 @@
+/* ============================= */
 /* RESET */
+/* ============================= */
+
 * {
   box-sizing: border-box;
 }
@@ -8,6 +11,7 @@ body {
   font-family: "Segoe UI", sans-serif;
   color: #2c2c2c;
   overflow-x: hidden;
+  background: #000; /* fallback background */
 }
 
 /* ============================= */
@@ -20,7 +24,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  z-index: -2;
+  z-index: 0; /* FIXED: no negative z-index */
   animation: slowZoom 80s ease-in-out infinite alternate;
 }
 
@@ -30,7 +34,18 @@ body {
   animation: pan 60s ease-in-out infinite alternate;
 }
 
-/* Subtle variations so tiles don't move identically */
+/* Background Images */
+.tile1 { background-image: url("images/santorini.jpg"); }
+.tile2 { background-image: url("images/mallorca.jpg"); }
+.tile3 { background-image: url("images/dubai.jpg"); }
+.tile4 { background-image: url("images/maldives.jpg"); }
+.tile5 { background-image: url("images/interlaken.jpg"); }
+.tile6 { background-image: url("images/eiffel.jpg"); }
+.tile7 { background-image: url("images/plitvice.jpg"); }
+.tile8 { background-image: url("images/photo8.jpg"); }
+.tile9 { background-image: url("images/photo9.jpg"); }
+
+/* Slight animation variation */
 .collage div:nth-child(odd) {
   animation-duration: 70s;
 }
@@ -38,12 +53,15 @@ body {
   animation-duration: 90s;
 }
 
-/* LIGHT OVERLAY (VERY IMPORTANT) */
+/* ============================= */
+/* OVERLAY */
+/* ============================= */
+
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(255, 250, 242, 0.78);
-  z-index: -1;
+  background: rgba(255, 250, 242, 0.45); /* softer overlay */
+  z-index: 1; /* above collage */
 }
 
 /* ============================= */
@@ -51,6 +69,8 @@ body {
 /* ============================= */
 
 .content {
+  position: relative;   /* IMPORTANT */
+  z-index: 2;           /* above overlay */
   max-width: 900px;
   margin: auto;
   padding: 30px 20px 60px;
@@ -58,6 +78,7 @@ body {
 }
 
 /* HEADINGS */
+
 h1, h2 {
   color: #5a2d2d;
 }
@@ -67,6 +88,7 @@ h1, h2 {
 }
 
 /* PAGES */
+
 .page {
   display: none;
 }
@@ -134,7 +156,6 @@ h1, h2 {
   margin-bottom: 15px;
 }
 
-/* INPUT */
 input {
   width: 95%;
   padding: 12px;
@@ -166,7 +187,6 @@ button:hover {
   background: #f1e2c6;
 }
 
-/* SMALL TEXT */
 .hint {
   font-size: 13px;
   color: #777;
@@ -177,19 +197,11 @@ button:hover {
 /* ============================= */
 
 @keyframes slowZoom {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.08);
-  }
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
 }
 
 @keyframes pan {
-  from {
-    background-position: 45% 45%;
-  }
-  to {
-    background-position: 55% 55%;
-  }
+  from { background-position: 45% 45%; }
+  to { background-position: 55% 55%; }
 }
