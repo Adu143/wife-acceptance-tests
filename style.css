@@ -1,31 +1,26 @@
-/* ============================= */
-/* RESET */
-/* ============================= */
-
 * {
   box-sizing: border-box;
 }
 
-body {
+html, body {
   margin: 0;
+  height: 100%;
   font-family: "Segoe UI", sans-serif;
-  color: #2c2c2c;
   overflow-x: hidden;
-  background: #000; /* fallback background */
 }
 
-/* ============================= */
-/* COLLAGE WITH KEN BURNS EFFECT */
-/* ============================= */
+/* ================= COLLAGE ================= */
 
 .collage {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* IMPORTANT FIX */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  z-index: 0; /* FIXED: no negative z-index */
-  animation: slowZoom 80s ease-in-out infinite alternate;
+  z-index: 0;
 }
 
 .collage div {
@@ -34,7 +29,7 @@ body {
   animation: pan 60s ease-in-out infinite alternate;
 }
 
-/* Background Images */
+/* Background images */
 .tile1 { background-image: url("images/santorini.jpg"); }
 .tile2 { background-image: url("images/mallorca.jpg"); }
 .tile3 { background-image: url("images/dubai.jpg"); }
@@ -45,161 +40,110 @@ body {
 .tile8 { background-image: url("images/blackforest.jpg"); }
 .tile9 { background-image: url("images/disneyland.jpg"); }
 
-/* Slight animation variation */
-.collage div:nth-child(odd) {
-  animation-duration: 70s;
-}
-.collage div:nth-child(even) {
-  animation-duration: 90s;
-}
-
-/* ============================= */
-/* OVERLAY */
-/* ============================= */
+/* ================= OVERLAY ================= */
 
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(255, 250, 242, 0.45); /* softer overlay */
-  z-index: 1; /* above collage */
+  background: rgba(0,0,0,0.35);
+  z-index: 1;
 }
 
-/* ============================= */
-/* CONTENT */
-/* ============================= */
+/* ================= CONTENT ================= */
 
 .content {
-  position: relative;   /* IMPORTANT */
-  z-index: 2;           /* above overlay */
+  position: relative;
+  z-index: 2;
   max-width: 900px;
   margin: auto;
-  padding: 30px 20px 60px;
+  padding: 40px 20px 60px;
   text-align: center;
+  color: white;
 }
 
-/* HEADINGS */
-
 h1, h2 {
-  color: #5a2d2d;
+  color: white;
 }
 
 .subtitle {
-  color: #666;
+  color: #f1f1f1;
 }
 
-/* PAGES */
+/* ================= PAGES ================= */
 
-.page {
-  display: none;
-}
+.page { display: none; }
+.page.active { display: block; }
 
-.page.active {
-  display: block;
-}
-
-/* ============================= */
-/* WHEEL */
-/* ============================= */
+/* ================= WHEEL ================= */
 
 .wheel-wrapper {
   position: relative;
   width: 300px;
-  margin: 30px auto;
-  cursor: pointer;
+  height: 300px;
+  margin: 40px auto;
 }
 
-.spin-text {
+canvas {
+  display: block;
+}
+
+/* CENTER SPIN BUTTON */
+.spin-btn {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #ffffff;
-  color: #5a2d2d;
-  padding: 18px 22px;
+  background: white;
+  color: #333;
+  border: none;
   border-radius: 50%;
-  font-weight: 700;
-  letter-spacing: 1px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  width: 90px;
+  height: 90px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 
-/* ============================= */
-/* TIMER */
-/* ============================= */
+/* ================= TIMER ================= */
 
 #timer {
+  margin: 15px 0;
+  padding: 8px 16px;
+  background: white;
+  color: black;
   display: inline-block;
-  margin-top: 12px;
-  padding: 6px 16px;
-  font-size: 16px;
-  color: #333;
-  background: #ffffff;
   border-radius: 20px;
-  font-weight: 600;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  font-weight: bold;
 }
 
-/* ============================= */
-/* QUESTION CARD */
-/* ============================= */
+/* ================= QUESTION ================= */
 
 #questionBox {
-  background: #ffffff;
+  background: white;
+  color: black;
   padding: 25px;
-  border-radius: 18px;
+  border-radius: 15px;
   max-width: 600px;
-  margin: 25px auto;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-}
-
-#questionBox p {
-  font-size: 18px;
-  margin-bottom: 15px;
+  margin: 20px auto;
 }
 
 input {
   width: 95%;
-  padding: 12px;
-  font-size: 15px;
-  border-radius: 12px;
-  border: 1px solid #d2c4aa;
+  padding: 10px;
+  margin-top: 10px;
 }
 
-/* ============================= */
-/* BUTTONS */
-/* ============================= */
-
-.actions {
-  margin-top: 15px;
-}
+/* ================= BUTTONS ================= */
 
 button {
-  background: #e6d3b1;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 20px;
   border: none;
-  color: #2c2c2c;
-  padding: 12px 22px;
-  margin: 8px;
-  border-radius: 25px;
   cursor: pointer;
-  font-weight: 600;
 }
 
-button:hover {
-  background: #f1e2c6;
-}
-
-.hint {
-  font-size: 13px;
-  color: #777;
-}
-
-/* ============================= */
-/* KEN BURNS ANIMATIONS */
-/* ============================= */
-
-@keyframes slowZoom {
-  from { transform: scale(1); }
-  to { transform: scale(1.08); }
-}
+/* ================= ANIMATION ================= */
 
 @keyframes pan {
   from { background-position: 45% 45%; }
