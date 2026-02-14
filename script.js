@@ -55,6 +55,16 @@ const topics = {
       "What would you change if you time travel to our initial years of love?",
       "What would you say to us 10 years from now?"
     ]
+  },
+  future: {
+    title: "Future ❤️",
+    questions: [
+      "What is one materialistic thing you want me to buy this year",
+      "Which one country would you absolutely want to travel",
+      "What is one thing you are scared about in the next few years",
+      "What changes would you make to make our relationship better",
+      "What would you want me to change this year to make our relationship better"
+    ]
   }
 };
 
@@ -158,7 +168,7 @@ function showSummary() {
 const wheel = document.getElementById("wheel");
 const ctx = wheel.getContext("2d");
 const keys = Object.keys(topics);
-const colors = ["#f6c1cc", "#f9d5a7", "#cde7e3", "#d6e6b5", "#e7c6ff"];
+const colors = ["#f6c1cc", "#f9d5a7", "#cde7e3", "#d6e6b5", "#e7c6ff", "#f56c49"];
 let angle = 0;
 
 function drawWheel() {
